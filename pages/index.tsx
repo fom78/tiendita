@@ -1,8 +1,8 @@
 import React from "react";
-import {GetStaticProps} from "next";
-import {Button, Flex, Grid, Link, Stack, Text} from "@chakra-ui/react";
+import { GetStaticProps } from "next";
+import { Button, Flex, Grid, Image, Link, Stack, Text } from "@chakra-ui/react";
 
-import {Product} from "../product/types";
+import { Product } from "../product/types";
 import api from "../product/api";
 
 interface Props {
@@ -15,8 +15,9 @@ function parseCurrency(value: number): string {
     currency: "ARS",
   });
 }
+const phoneNumber: string = `543489656693`
 
-const IndexRoute: React.FC<Props> = ({products}) => {
+const IndexRoute: React.FC<Props> = ({ products }) => {
   const [cart, setCart] = React.useState<Product[]>([]);
   const text = React.useMemo(
     () =>
@@ -37,26 +38,47 @@ const IndexRoute: React.FC<Props> = ({products}) => {
       <Grid gridGap={6} templateColumns="repeat(auto-fill, minmax(240px, 1fr))">
         {products.map((product) => (
           <Stack
-            key={product.id}
-            backgroundColor="gray.100"
-            borderRadius="md"
-            padding={4}
-            spacing={3}
-          >
-            <Stack spacing={1}>
-              <Text>{product.title}</Text>
-              <Text color="green.500" fontSize="sm" fontWeight="500">
-                {parseCurrency(product.price)}
-              </Text>
+          key={product.id}
+          alignItems="center"
+          borderColor="gray.100"
+          borderRadius="md"
+          borderWidth={1}
+          data-testid="product"
+          direction="row"
+          justifyContent="space-between"
+          spacing={3}
+        >
+            <Stack direction="row" padding={2} spacing={4} width="100%">
+              <Image
+                backgroundColor="white"
+                borderRadius="md"
+                height={{ base: 24, sm: 36 }}
+                loading="lazy"
+                minWidth={{ base: 24, sm: 36 }}
+                objectFit="contain"
+                src={product.image}
+                width={{ base: 24, sm: 36 }}
+              />
+              <Stack justifyContent="space-between" spacing={1} width="100%">
+                <Stack spacing={1}>
+                  <Text fontWeight="500">{product.title}</Text>
+                  <Text color="gray.500" fontSize="sm">
+                    {product.description}
+                  </Text>
+                </Stack>
+                <Stack alignItems="flex-end" direction="row" justifyContent="space-between">
+                  <Text color="green.500" fontSize="sm" fontWeight="500">
+                    {parseCurrency(product.price)}
+                  </Text>
+                  <Button
+                    size="xs"
+                    onClick={() => setCart((cart) => cart.concat(product))}
+                  >
+                    Agregar
+                  </Button>
+                </Stack>
+              </Stack>
             </Stack>
-            <Button
-              colorScheme="primary"
-              size="sm"
-              variant="outline"
-              onClick={() => setCart((cart) => cart.concat(product))}
-            >
-              Agregar
-            </Button>
           </Stack>
         ))}
       </Grid>
@@ -66,7 +88,7 @@ const IndexRoute: React.FC<Props> = ({products}) => {
             isExternal
             as={Link}
             colorScheme="whatsapp"
-            href={`https://wa.me/5491141414141?text=${encodeURIComponent(text)}`}
+            href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`}
             width="fit-content"
           >
             Completar pedido ({cart.length} productos)
