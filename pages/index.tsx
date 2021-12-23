@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { GetStaticProps } from "next";
 
 import { Product } from "../product/types";
@@ -12,7 +12,6 @@ interface Props {
 
 
 const IndexRoute: React.FC<Props> = ({ products }) => {
-  console.log(products);
 
   return (
     <StoreScreen products={products} />

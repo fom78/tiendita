@@ -54,4 +54,26 @@ npx cypress open
 }
 ```
 
-min 19:33
+# React JEST
+
+- Instalamos dependencias de desarrollo
+
+```bash
+npm install --save.dev jest ts-jest @types/jest
+```
+
+- Luego ejecutamos el siguiente comando para crear el json de configuracion
+
+```bash
+npx ts-jest config:init
+```
+
+Como resultado tenemos el archivo: jest.config.js
+
+- Jest dom
+```bash
+npm install --save-dev @testing-library/jest-dom
+```
+
+min 48:10
+

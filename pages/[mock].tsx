@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Product } from "../product/types";
@@ -15,7 +15,6 @@ interface Params extends ParsedUrlQuery {
 }
 
 const IndexRoute: React.FC<Props> = ({ products }) => {
-  console.log(products);
 
   return (
     <StoreScreen products={products} />
@@ -23,7 +22,6 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps<unknown, Params> = async ({params}) => {
-  console.log(params.mock);
   
   const products = await api.mock.list(params.mock);
 
