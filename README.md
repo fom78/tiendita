@@ -80,5 +80,5 @@ npm install --save-dev @testing-library/jest-dom
 npx jest
 ```
 
-min 48:10
+min 1:23:51
 

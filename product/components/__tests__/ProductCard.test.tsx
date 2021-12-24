@@ -30,8 +30,9 @@ test("deberia ejecutar onAdd cuando clickeo en agregar y no tengo opciones", () 
   render(<ProductCard product={product} onAdd={onAdd} />);
 
   fireEvent.click(screen.getByText("Agregar"));
+  fireEvent.click(screen.getByText("Agregar"));
 
-  expect(onAdd).toHaveBeenCalled();
+  expect(onAdd).toHaveBeenCalledTimes(2);
 });
 
 // test("deberia ejecutar onAdd cuando clickeo en agregar y tengo opciones", () => {
