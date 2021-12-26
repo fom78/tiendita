@@ -80,5 +80,15 @@ npm install --save-dev @testing-library/jest-dom
 npx jest
 ```
 
-min 1:23:51
+# Github Actions
 
+- instalamos wait-on
+
+
+
+
+```bash
+npm i -D wait-on
+```
+
+- pusheamos a la rama de testing

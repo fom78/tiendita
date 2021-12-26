@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "integration": "cypress run"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.4.2",
@@ -30,6 +32,7 @@
     "cypress": "^9.2.0",
     "jest": "^27.4.5",
     "ts-jest": "^27.1.2",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "wait-on": "^6.0.0"
   }
 }
