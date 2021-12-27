@@ -1,0 +1,65 @@
+[
+    {
+        "id": "0001",
+        "type": "product",
+        "title": "Aromatizante de Ambiente",
+        "category": "Aromatizantes",
+        "description": "Aromatizante de Ambiente AMBAR, 280 cc.",
+        "image": "/assets/products/am01.jpg",
+        "price": 200
+    },
+    {
+        "id": "0002",
+        "type": "product",
+        "title": "Aromatizante de Ambiente",
+        "category": "Aromatizantes",
+        "description": "Aromatizante de Ambiente AMBAR, 280 cc.",
+        "image": "/assets/products/am02.jpg",
+        "price": 200
+    },
+    {
+        "id": "0003",
+        "type": "product",
+        "title": "Aromatizante de Ambiente",
+        "category": "Aromatizantes",
+        "description": "Aromatizante de Ambiente Saphirus, 280 cc.",
+        "image": "/assets/products/sa01.jpg",
+        "price": 260
+    },
+    {
+        "id": "0004",
+        "type": "product",
+        "title": "Aromatizador Textil",
+        "category": "Textil",
+        "description": "Aromatizador Textil Saphirus, 280 ml.",
+        "image": "/assets/products/sa02.jpg",
+        "price": 210
+    },
+    {
+        "id": "0005",
+        "type": "product",
+        "title": "Aceite esencial",
+        "category": "Aceites",
+        "description": "Aromatizante de Ambiente Saphirus, Aceite esencial 10 ml.",
+        "image": "/assets/products/xx01.jpg",
+        "price": 170
+    },
+    {
+        "id": "0006",
+        "type": "product",
+        "title": "Aromatizante de Ambiente",
+        "category": "Aromatizantes",
+        "description": "Aromatizante de Ambiente Saphirus, 280 cc.",
+        "image": "/assets/products/xx02.jpg",
+        "price": 260
+    },
+    {
+        "id": "0007",
+        "type": "product",
+        "title": "Home Spray",
+        "category": "Aromatizantes",
+        "description": "Aromatizante para ropa y ambiente Saphirus, 500 ml.",
+        "image": "/assets/products/xx03.jpg",
+        "price": 360
+    }
+]
