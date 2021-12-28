@@ -23,31 +23,84 @@ import ProductCard from "../components/ProductCard";
 interface Props {
   products: Product[];
 }
+interface CartItem extends Product {
+  quantity: number;
+}
 
 const phoneNumber: string = `543489656693`
 
 const StoreScreen: React.FC<Props> = ({ products }) => {
-  const [cart, setCart] = React.useState<Product[]>([]);
-  const text = React.useMemo(
+  const [cart, setCart] = React.useState<CartItem[]>([]);
+
+  const totalAPagar = React.useMemo(
+    () => parseCurrency(cart.reduce((total, product) => total + (product.price * product.quantity), 0)), [cart])
+
+  const textWhatsApps = React.useMemo(
     () =>
       cart
         .reduce(
           (message, product) =>
-            message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`),
+            message.concat(`* ${product.title} - ${parseCurrency(product.price * product.quantity)}\n`),
           ``,
         )
         .concat(
-          `\nTotal: ${parseCurrency(cart.reduce((total, product) => total + product.price, 0))}`,
+          `\nTotal: ${totalAPagar}`,
         ),
-    [cart],
+    [cart, totalAPagar]
   );
 
   function handleRemoveFromCart(index: number) {
     setCart(cart => cart.filter((_, _index) => _index !== index))
   }
+
+  function handleAddToCart(product: Product) {
+    setCart(cart => {
+      const isInCart = cart.some(item => item.id === product.id)
+      if (isInCart) {
+        return cart.map(item => item.id === product.id
+          ? {
+            ...item,
+            quantity: item.quantity + 1
+          }
+          : item
+        )
+      }
+      return cart.concat({ ...product, quantity: 1 })
+    })
+  }
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
+  function handleIncrementquantity(productId: Product["id"]) {
+    setCart(cart => {
+      const isInCart = cart.some(item => item.id === productId)
+      if (isInCart) {
+        return cart.map(item => item.id === productId
+          ? {
+            ...item,
+            quantity: item.quantity + 1
+          }
+          : item
+        )
+      }
+    })
+
+  }
+
+  function handleDecrementquantity(productId: Product["id"]) {
+    setCart(cart => {
+      const isInCart = cart.some(item => item.id === productId)
+      if (isInCart) {
+        return cart.map(item => item.id === productId
+          ? {
+            ...item,
+            quantity: item.quantity - 1
+          }
+          : item
+        )
+      }
+    })
+  }
 
   return (
     <>
@@ -58,24 +111,24 @@ const StoreScreen: React.FC<Props> = ({ products }) => {
               <ProductCard
                 product={product}
                 key={product.id}
-                onAdd={(product) => setCart((cart) => cart.concat(product))} />
+                onAdd={handleAddToCart} />
             ))}
           </Grid>
           : <Text color="gray.500" fontSize="lg" margin="auto">No hay productos!!</Text>}
         {Boolean(cart.length) && (
           <Flex alignItems="center" bottom={4} justifyContent="center" position="sticky">
             <Button
-              isExternal
+              // isExternal
               colorScheme="blue"
               width="fit-content"
               onClick={onOpen}
             >
-              <Text pr="2" color="white.900" >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-              </svg>
+              <Text pr="2" color="white.900" fontWeight={500}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>
               </Text>
-              
+
               Ver Carrito
             </Button>
           </Flex>
@@ -90,21 +143,29 @@ const StoreScreen: React.FC<Props> = ({ products }) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Detalle Pedido</DrawerHeader>
 
           <DrawerBody>
             <List spacing={3}>
-              {cart.map((product, index) => 
-                <ListItem key={product.id}>
-                  <HStack justifyContent="space-between">
-                    <Text>{product.title}</Text>
-                    <HStack>
-                      <Text>{parseCurrency(product.price)}</Text>
-                      <Button colorScheme="red" onClick={() => handleRemoveFromCart(index)}>X</Button>
+              {cart.map((product, index) => {
+               return Boolean(product.quantity) && (
+                  <ListItem key={product.id}>
+                    <HStack justifyContent="space-between">
+                      <Text fontSize="xs" fontWeight={500} >{product.title} {product.quantity > 1 ? `x${product.quantity}` : ``}</Text>
+                      <Text fontWeight={500} color="blue.500">{parseCurrency(product.price * product.quantity)}</Text>
                     </HStack>
-                  </HStack>
-                </ListItem>)}
+                    <HStack>
+                      <Button size="xs" onClick={() => handleIncrementquantity(product.id)}>+</Button>
+                      <Text>{product.quantity}</Text>
+                      <Button size="xs" onClick={() => handleDecrementquantity(product.id)}>-</Button>
+                    </HStack>
+
+                  </ListItem>
+                  )
+              }
+              )}
             </List>
+            <Text>{totalAPagar}</Text>
 
           </DrawerBody>
 
@@ -118,7 +179,7 @@ const StoreScreen: React.FC<Props> = ({ products }) => {
                 isExternal
                 as={Link}
                 colorScheme="whatsapp"
-                href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`}
+                href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(textWhatsApps)}`}
                 // width="80%"
                 size="md"
               >
