@@ -1,6 +1,6 @@
-import * as React from "react";
+import { FC } from "react";
 
-import { Button, Flex, Grid, Image, Link, Stack, Text } from "@chakra-ui/react";
+import { Button, Image, Stack, Text } from "@chakra-ui/react";
 
 import { Product } from "../types";
 import { parseCurrency } from "../../utils/currency";
@@ -10,11 +10,10 @@ interface Props {
     onAdd: (product: Product) => void
 }
 
-const ProductCard: React.FC<Props> = ({product,onAdd}) => {
+const ProductCard: FC<Props> = ({product,onAdd}) => {
 
     return (
         <Stack
-        // key={product.id}
         alignItems="center"
         borderColor="gray.100"
         borderRadius="md"
