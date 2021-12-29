@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 import { Button, Image, Stack, Text } from "@chakra-ui/react";
 
