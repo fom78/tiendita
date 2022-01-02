@@ -5,7 +5,7 @@
         "title": "Aromatizante de Ambiente",
         "category": "Aromatizantes",
         "description": "Aromatizante de Ambiente AMBAR, 280 cc.",
-        "image": "/assets/products/am01.jpg",
+        "image": "/assets/products/img001.jpg",
         "price": 200
     },
     {
@@ -14,7 +14,7 @@
         "title": "Aromatizante de Ambiente",
         "category": "Aromatizantes",
         "description": "Aromatizante de Ambiente AMBAR, 280 cc.",
-        "image": "/assets/products/am02.jpg",
+        "image": "/assets/products/img002.jpg",
         "price": 200
     },
     {
@@ -23,7 +23,7 @@
         "title": "Aromatizante de Ambiente",
         "category": "Aromatizantes",
         "description": "Aromatizante de Ambiente Saphirus, 280 cc.",
-        "image": "/assets/products/sa01.jpg",
+        "image": "/assets/products/img003.jpg",
         "price": 260
     },
     {
@@ -32,7 +32,7 @@
         "title": "Aromatizador Textil",
         "category": "Textil",
         "description": "Aromatizador Textil Saphirus, 280 ml.",
-        "image": "/assets/products/sa02.jpg",
+        "image": "/assets/products/img004.jpg",
         "price": 210
     },
     {
@@ -41,7 +41,7 @@
         "title": "Aceite esencial",
         "category": "Aceites",
         "description": "Aromatizante de Ambiente Saphirus, Aceite esencial 10 ml.",
-        "image": "/assets/products/xx01.jpg",
+        "image": "/assets/products/img005.jpg",
         "price": 170
     },
     {
@@ -50,7 +50,7 @@
         "title": "Aromatizante de Ambiente",
         "category": "Aromatizantes",
         "description": "Aromatizante de Ambiente Saphirus, 280 cc.",
-        "image": "/assets/products/xx02.jpg",
+        "image": "/assets/products/img006.jpg",
         "price": 260
     },
     {
@@ -59,7 +59,7 @@
         "title": "Home Spray",
         "category": "Aromatizantes",
         "description": "Aromatizante para ropa y ambiente Saphirus, 500 ml.",
-        "image": "/assets/products/xx03.jpg",
+        "image": "/assets/products/img007.jpg",
         "price": 360
     }
 ]
