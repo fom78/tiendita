@@ -12,6 +12,7 @@ interface Props {
 
 
 const IndexRoute: React.FC<Props> = ({ products }) => {
+console.log(products);
 
   return (
     <StoreScreen products={products} />
@@ -19,7 +20,7 @@ const IndexRoute: React.FC<Props> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const products = await api.list();
+  const products =  (await api.list()).filter(product=> product.stock > 0);
 
   return {
     revalidate: 10,

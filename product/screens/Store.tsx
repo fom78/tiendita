@@ -59,6 +59,7 @@ const StoreScreen: FC<Props> = ({ products }) => {
 
   }
 
+
   function handleDecrementquantity(productId: Product["id"]) {
     setCart(cart => {
       const isInCart = cart.some(item => item.id === productId)
@@ -89,7 +90,7 @@ const StoreScreen: FC<Props> = ({ products }) => {
           : <Text color="gray.500" fontSize="lg" margin="auto">No hay productos!!</Text>}
         {console.log("tamaño del cart: ",cart)
         }
-        {Boolean(cart.length) && (
+        {Boolean(totalProductsInCart) && (
           <Flex alignItems="center" bottom={4} justifyContent="center" position="sticky">
             <Button
               // isExternal
