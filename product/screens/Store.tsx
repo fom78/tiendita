@@ -87,6 +87,8 @@ const StoreScreen: FC<Props> = ({ products }) => {
             ))}
           </Grid>
           : <Text color="gray.500" fontSize="lg" margin="auto">No hay productos!!</Text>}
+        {console.log("tamaño del cart: ",cart)
+        }
         {Boolean(cart.length) && (
           <Flex alignItems="center" bottom={4} justifyContent="center" position="sticky">
             <Button
