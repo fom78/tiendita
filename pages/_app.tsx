@@ -27,15 +27,16 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
           <VStack marginBottom={6}>
             {/* <Image borderRadius={9999} src="//placehold.it/128x128" /> */}
             <Image 
-              borderRadius={9999} 
+              borderRadius="lg"
               src="/assets/banner.jpg" 
-              height={{ base: 24, sm: 36 }}
-              minWidth={{ base: 24, sm: 36 }}
+              // height={{ base: 24, sm: 36 }}
+              height="50%"
+              // minWidth={{ base: 24, sm: 36 }}
               objectFit="contain"
-              width={{ base: 24, sm: 36 }}
+              // width={{ base: 24, sm: 36 }}
             />        
-            <Heading>Aromas del Corazon</Heading>
-            <Text>Desde el corazon a tus ambientes</Text>
+            <Heading fontSize={{ base: '24px', md: '40px', lg: '56px' }}>Aromas del Corazon</Heading>
+            <Text fontSize={{ base: '18px', md: '24px', lg: '40px' }}>Desde el corazon a tus ambientes</Text>
           </VStack>
           <Divider marginY={6} />
           <Component {...pageProps} />

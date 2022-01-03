@@ -24,6 +24,7 @@ export default {
                   products.map((product) => ({
                     ...product,
                     price: Number(product.price),
+                    stock: Number(product.stock),
                   })),
                 );
               },

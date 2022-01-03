@@ -12,6 +12,7 @@ const product: Product = {
   title: "title",
   category: "category",
   description: "description",
+  stock: 1,
 };
 
 test("deberia mostrar el titulo, precio y boton", () => {
